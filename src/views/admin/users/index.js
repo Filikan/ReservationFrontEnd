@@ -1,4 +1,3 @@
-import MUIDataTable from "mui-datatables";
 import { createTheme } from "@mui/material";
 import { ThemeProvider } from "@mui/material";
 import {Button} from "@mui/material";
@@ -30,14 +29,6 @@ function UsersPage() {
       });
     const columns = [
         {
-          name: "registrationNumber",
-          label: "Registration Number",
-          options: {
-            filter: true,
-            sort: true
-          }
-        },
-        {
             name: "firstName",
             label: "First Name",
             options: {
@@ -56,30 +47,6 @@ function UsersPage() {
         {
             name: "email",
             label: "Email",
-            options: {
-              filter: true,
-              sort: true
-            }
-        },
-        {
-            name: "departmentId",
-            label: "Department",
-            options: {
-              filter: true,
-              sort: true
-            }
-        },
-        {
-            name: "zoneId",
-            label: "Zone",
-            options: {
-              filter: true,
-              sort: true
-            }
-        },
-        {
-            name: "transportChoice",
-            label: "Transport Choice",
             options: {
               filter: true,
               sort: true
