@@ -52,7 +52,7 @@ const NotificationList = () => {
     const chipWarningSX = {
         ...chipSX,
         color: theme.palette.warning.dark,
-        backgroundColor: theme.palette.warning.lightq
+        backgroundColor: theme.palette.warning.light
     };
 
     const chipSuccessSX = {

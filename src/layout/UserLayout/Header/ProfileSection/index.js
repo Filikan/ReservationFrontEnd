@@ -56,7 +56,7 @@ const ProfileSection = () => {
      * */
     const anchorRef = useRef(null);
     const handleLogout = async () => {
-        console.log('Logout');
+        navigate('/');
     };
 
     const handleClose = (event) => {
@@ -95,14 +95,14 @@ const ProfileSection = () => {
                     alignItems: 'center',
                     borderRadius: '27px',
                     transition: 'all .2s ease-in-out',
-                    borderColor: theme.palette.primary.light,
-                    backgroundColor: theme.palette.primary.light,
+                    borderColor: theme.palette.grey[300],
+                    backgroundColor: theme.palette.grey[300],
                     '&[aria-controls="menu-list-grow"], &:hover': {
-                        borderColor: theme.palette.primary.main,
-                        background: `${theme.palette.primary.main}!important`,
-                        color: theme.palette.primary.light,
+                        borderColor: theme.palette.common.black,
+                        background: `${theme.palette.common.black}!important`,
+                        color: theme.palette.common.white,
                         '& svg': {
-                            stroke: theme.palette.primary.light
+                            stroke: theme.palette.common.white
                         }
                     },
                     '& .MuiChip-label': {
@@ -123,7 +123,7 @@ const ProfileSection = () => {
                         color="inherit"
                     />
                 }
-                label={<IconSettings stroke={1.5} size="1.5rem" color={theme.palette.primary.main} />}
+                label={<IconSettings stroke={1.5} size="1.5rem" color={theme.palette.common.black} />}
                 variant="outlined"
                 ref={anchorRef}
                 aria-controls={open ? 'menu-list-grow' : undefined}
@@ -162,7 +162,7 @@ const ProfileSection = () => {
                                                     Furkan Civan
                                                 </Typography>
                                             </Stack>
-                                            <Typography variant="subtitle2">Project Admin</Typography>
+                                            <Typography variant="subtitle2">Project User</Typography>
                                         </Stack>
                                         <OutlinedInput
                                             sx={{ width: '100%', pr: 1, pl: 2, my: 2 }}
