@@ -6,12 +6,10 @@ import { Grid } from '@mui/material';
 // project imports
 // import EarningCard from './EarningCard';
 import { gridSpacing } from 'store/constant';
-// import Reservation from './Reservation';
-import UserCard from './UserCard';
 
 // ==============================|| DEFAULT DASHBOARD ||============================== //
 
-const UsersPage = () => {
+const Dashboard = () => {
     const [isLoading, setLoading] = useState(true);
     useEffect(() => {
         setLoading(false);
@@ -20,12 +18,10 @@ const UsersPage = () => {
     return (
         <Grid container spacing={gridSpacing}>
             <Grid item xs={12}>
-                {/* <EarningCard isLoading={isLoading} /> */}
-                {/* <Reservation isLoading={isLoading} /> */}
-                <UserCard isLoading={isLoading} />
+                <EarningCard isLoading={isLoading} />
             </Grid>
         </Grid>
     );
 };
 
-export default UsersPage;
+export default Dashboard;

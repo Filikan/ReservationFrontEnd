@@ -1,13 +1,13 @@
 import {mainUrl} from "store/constant"
 
-class UserService {
-/*   
-    addRole(serviceCaller, requestBody,callback,errorCallBack){
+class ReservationService {
+  
+/*     addProduct(serviceCaller, requestBody,callback,errorCallBack){
     let headers= { 'Content-Type': 'application/json'};
-        serviceCaller.post(mainUrl + "/role", undefined, headers, requestBody, callback, errorCallBack)
+        serviceCaller.post(mainUrl + "/products/add", undefined, headers, requestBody, callback, errorCallBack)
     } */
-    getUsers(serviceCaller, queryParams, callback,errorCallBack){
-        serviceCaller.get(mainUrl+"/users", queryParams, undefined  ,  callback, errorCallBack)
+    getReservations(serviceCaller, queryParams, callback,errorCallBack){
+        serviceCaller.get(mainUrl+"/reservations", queryParams, undefined  ,  callback, errorCallBack)
     }
 /*     updateProduct(serviceCaller, requestBody,callback,errorCallBack){
         let headers= { 'Content-Type': 'application/json'};
@@ -19,4 +19,4 @@ class UserService {
     } */
 }
 
-export default new UserService();
+export default new ReservationService();

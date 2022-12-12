@@ -1,10 +1,10 @@
 export const ReservationWithAuth = (url, body) => {
 
-    var request = fetch("/api"+url,  {
+    var request = fetch(url,  {
         method: "POST", 
         headers: {
-          "Content-Type": "application/json",
-          "Authorization" : localStorage.getItem("tokenKey"),
+          "Content-Type": "application/json"
+          // "Authorization" : localStorage.getItem("tokenKey"),
         },
         body : JSON.stringify(body),
       })
@@ -14,7 +14,7 @@ export const ReservationWithAuth = (url, body) => {
   
   export const ReservationWithoutAuth = (url, body) => {
   
-    var request = fetch("/api"+url,  {
+    var request = fetch(url,  {
         method: "POST", 
         headers: {
           "Content-Type": "application/json",
@@ -27,7 +27,7 @@ export const ReservationWithAuth = (url, body) => {
   
   export const PutWithAuth = (url, body) => {
   
-    var request = fetch("/api"+url,  {
+    var request = fetch(url,  {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -41,11 +41,11 @@ export const ReservationWithAuth = (url, body) => {
   
   export const GetWithAuth = (url) => {
   
-    var request = fetch("/api"+url,  {
+    var request = fetch(url,  {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "Authorization" : localStorage.getItem("tokenKey"),
+          // "Authorization" : localStorage.getItem("tokenKey"),
         },
       })
   
@@ -54,11 +54,11 @@ export const ReservationWithAuth = (url, body) => {
   
   export const DeleteWithAuth = (url) => {
   
-    var request = fetch("/api"+url,  {
+    var request = fetch(url,  {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-          "Authorization" : localStorage.getItem("tokenKey"),
+          // "Authorization" : localStorage.getItem("tokenKey"),
         },
       })
   
@@ -67,7 +67,7 @@ export const ReservationWithAuth = (url, body) => {
   
   export const RefreshToken = () => {
   
-    var request = fetch("/api/auth/refresh", {
+    var request = fetch("auth/refresh", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

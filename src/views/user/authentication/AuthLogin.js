@@ -63,7 +63,7 @@ const Login = ({ ...others }) => {
     } 
 
     const sendRequest = (path) => {
-        PostWithoutAuth(("/auth/"+path), {
+        ReservationWithoutAuth(("/auth/"+path), {
             email  : email , 
             password : password,
           })
@@ -81,8 +81,8 @@ const Login = ({ ...others }) => {
         setEmail("");
         setPassword("");
         console.log(localStorage);
-        localStorage.getItem("currentUserRole") === "EMPLOYEE" ? navigate('/user') : navigate('/admin/dashboard')
-        //navigate("/admin/department");
+        // localStorage.getItem("currentUserRole") === "EMPLOYEE" ? navigate('/users') : navigate('/admin/servers')
+        navigate("/admin/reservations");
     };
     return (
         <>

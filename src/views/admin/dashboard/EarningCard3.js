@@ -15,9 +15,8 @@ import Typography from '@mui/material/Typography';
 import UserService from 'services/users/UserService';
 import ServiceCaller from 'services/ServiceCaller';
 import ReservationService from "services/reservation/ReservationService";
-import ServerService from "services/servers/ServerService";
 
-function EarningCard() {
+function EarningCard3() {
     const [rows, setRows] = useState([]);
     const [isLoaded, setIsLoaded]= useState(false);
     const [error, setError] = useState(null);
@@ -26,12 +25,28 @@ function EarningCard() {
         overrides: {
           MuiChip: {
             root: {
-              backgroundColor: "black"
+              backgroundColor: "red"
             }
           }
         }
       });
     const columns = [
+        {
+            name: "firstName",
+            label: "First Name",
+            options: {
+              filter: true,
+              sort: true
+            }
+        },
+        {
+            name: "lastName",
+            label: "Last Name",
+            options: {
+              filter: true,
+              sort: true
+            }
+        },
         {
             name: "serverName",
             label: "Server Name",
@@ -41,40 +56,16 @@ function EarningCard() {
             }
         },
         {
-            name: "serverLocation",
-            label: "Server Location",
+            name: "reservationStartDate",
+            label: "Reservation Start Date",
             options: {
               filter: true,
               sort: true
             }
         },
         {
-            name: "serverIp",
-            label: "Server IP",
-            options: {
-              filter: true,
-              sort: true
-            }
-        },
-        {
-            name: "serialNumber",
-            label: "Serial Number",
-            options: {
-              filter: true,
-              sort: true
-            }
-        },
-        {
-            name: "serverType",
-            label: "Server Type",
-            options: {
-              filter: true,
-              sort: true
-            }
-        },
-        {
-            name: "isHost",
-            label: "Is Host",
+            name: "reservationEndDate",
+            label: "Reservation End Date",
             options: {
               filter: true,
               sort: true
@@ -108,7 +99,7 @@ function EarningCard() {
     }
     const getData = () => {
         let serviceCaller = new ServiceCaller();
-        ServerService.getServers(serviceCaller, '', (res) => {
+        ReservationService.getReservations(serviceCaller, '', (res) => {
             setIsLoaded(true);
             setRows(res);
         }, (error) => {
@@ -129,10 +120,10 @@ function EarningCard() {
     return (
         <ThemeProvider theme={getMuiTheme()}>
             <Button /* onClick={handleCreateOpen} */ variant="outlined" style={{margin:8, backgroundColor:"white", color:"black", borderColor:"white", textTransform: 'none'}}><AddCircleOutlineIcon></AddCircleOutlineIcon></Button>
-            <MUIDataTable title="Servers" columns={columns} data={rows} options={options} />
+            <MUIDataTable title="Reservations" columns={columns} data={rows} options={options} />
         </ThemeProvider>
   )}
 }
 
-export default EarningCard;
+export default EarningCard3;
   

@@ -14,10 +14,6 @@ import Container from '@mui/material/Container';
 import ReservationService from 'services/reservation/ReservationService';
 
 
-
-
-// ==============================|| SAMPLE PAGE ||============================== //
-
 const SamplePage = () => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
