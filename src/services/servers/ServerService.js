@@ -2,9 +2,9 @@ import {mainUrl} from "store/constant"
 
 class ServerService {
   
-/*     addProduct(serviceCaller, requestBody,callback,errorCallBack){
+/*     addServer(serviceCaller, requestBody,callback,errorCallBack){
     let headers= { 'Content-Type': 'application/json'};
-        serviceCaller.post(mainUrl + "/products/add", undefined, headers, requestBody, callback, errorCallBack)
+        serviceCaller.post(mainUrl + "/servers/add", undefined, headers, requestBody, callback, errorCallBack)
     } */
     getServers(serviceCaller, queryParams, callback,errorCallBack){
         serviceCaller.get(mainUrl+"/servers", queryParams, undefined  ,  callback, errorCallBack)

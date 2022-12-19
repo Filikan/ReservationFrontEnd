@@ -1,7 +1,7 @@
 import MUIDataTable from "mui-datatables";
 import { createTheme } from "@mui/material";
 import { ThemeProvider } from "@mui/material";
-import {Button} from "@mui/material";
+import { Button } from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
 import { useState, useEffect } from "react";
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
@@ -17,113 +17,119 @@ import ServiceCaller from 'services/ServiceCaller';
 import ReservationService from "services/reservation/ReservationService";
 
 function EarningCard3() {
-    const [rows, setRows] = useState([]);
-    const [isLoaded, setIsLoaded]= useState(false);
-    const [error, setError] = useState(null);
-    const getMuiTheme = () =>
+  const [rows, setRows] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [error, setError] = useState(null);
+
+  const handleButton = (path) => {
+    sendRequest(path)
+    navigate("/newReservation")
+  }
+  const getMuiTheme = () =>
     createTheme({
-        overrides: {
-          MuiChip: {
-            root: {
-              backgroundColor: "red"
-            }
+      overrides: {
+        MuiChip: {
+          root: {
+            backgroundColor: "red"
           }
         }
+      }
+    });
+  const columns = [
+    {
+      name: "firstName",
+      label: "First Name",
+      options: {
+        filter: true,
+        sort: true
+      }
+    },
+    {
+      name: "lastName",
+      label: "Last Name",
+      options: {
+        filter: true,
+        sort: true
+      }
+    },
+    {
+      name: "serverName",
+      label: "Server Name",
+      options: {
+        filter: true,
+        sort: true
+      }
+    },
+    {
+      name: "reservationStartDate",
+      label: "Reservation Start Date",
+      options: {
+        filter: true,
+        sort: true
+      }
+    },
+    {
+      name: "reservationEndDate",
+      label: "Reservation End Date",
+      options: {
+        filter: true,
+        sort: true
+      }
+    },
+    {
+      name: "edit",
+      label: "Edit",
+      options: {
+        filter: false,
+        sort: false,
+        customBodyRenderLite: (dataIndex) => {
+          return (
+            <Button aria-label="edit" onClick={() => { }}><EditIcon style={{ color: "#9e9e9e" }}></EditIcon></Button>
+          );
+        }
+      }
+    }
+  ];
+  const options = {
+    filterType: 'checkbox',
+    onRowSelectionChange: (currentSelect, allSelected) => {
+      const result = allSelected.map(item => { return rows.at(item.index) });
+      const selectedIds = result.map(item => {
+        return item.id;
       });
-    const columns = [
-        {
-            name: "firstName",
-            label: "First Name",
-            options: {
-              filter: true,
-              sort: true
-            }
-        },
-        {
-            name: "lastName",
-            label: "Last Name",
-            options: {
-              filter: true,
-              sort: true
-            }
-        },
-        {
-            name: "serverName",
-            label: "Server Name",
-            options: {
-              filter: true,
-              sort: true
-            }
-        },
-        {
-            name: "reservationStartDate",
-            label: "Reservation Start Date",
-            options: {
-              filter: true,
-              sort: true
-            }
-        },
-        {
-            name: "reservationEndDate",
-            label: "Reservation End Date",
-            options: {
-              filter: true,
-              sort: true
-            }
-        },
-        {
-          name: "edit",
-          label: "Edit",
-          options: {
-            filter: false,
-            sort: false,
-            customBodyRenderLite: (dataIndex) => {
-              return (
-                  <Button aria-label="edit" onClick={()=>{}}><EditIcon style={{color:"#9e9e9e"}}></EditIcon></Button>
-              );
-           }
-          }
-        }
-      ];
-    const options = {
-        filterType: 'checkbox',
-        onRowSelectionChange: (currentSelect, allSelected) => {                
-          const result = allSelected.map(item => { return rows.at(item.index) });
-          const selectedIds = result.map(item => {
-               return item.id;
-          }); 
-          //console.log("Selected Array: ",selectedIds);
-          console.log(selectedIds);
+      //console.log("Selected Array: ",selectedIds);
+      console.log(selectedIds);
     },
     //onRowsDelete:()=>{handleDelete()},
-    }
-    const getData = () => {
-        let serviceCaller = new ServiceCaller();
-        ReservationService.getReservations(serviceCaller, '', (res) => {
-            setIsLoaded(true);
-            setRows(res);
-        }, (error) => {
-              console.log(error)
-              setIsLoaded(true);
-              setError(error);
-        })
-        //setRefresh(false);
-      }
-      useEffect(() => {
-        getData()
-      }, [])
-    if(error) {
-        return <div> Error !!!</div>;
-    } else if(!isLoaded) {
-        return <div> Loading... </div>;} 
-      else {
+  }
+  const getData = () => {
+    let serviceCaller = new ServiceCaller();
+    ReservationService.getReservations(serviceCaller, '', (res) => {
+      setIsLoaded(true);
+      setRows(res);
+    }, (error) => {
+      console.log(error)
+      setIsLoaded(true);
+      setError(error);
+    })
+    //setRefresh(false);
+  }
+  useEffect(() => {
+    getData()
+  }, [])
+  if (error) {
+    return <div> Error !!!</div>;
+  } else if (!isLoaded) {
+    return <div> Loading... </div>;
+  }
+  else {
     return (
-        <ThemeProvider theme={getMuiTheme()}>
-            <Button /* onClick={handleCreateOpen} */ variant="outlined" style={{margin:8, backgroundColor:"white", color:"black", borderColor:"white", textTransform: 'none'}}><AddCircleOutlineIcon></AddCircleOutlineIcon></Button>
-            <MUIDataTable title="Reservations" columns={columns} data={rows} options={options} />
-        </ThemeProvider>
-  )}
+      <ThemeProvider theme={getMuiTheme()}>
+        <Button  onClick={() => handleButton("newReservation")}  variant="outlined" style={{ margin: 8, backgroundColor: "white", color: "red", borderColor: "white", textTransform: 'none' }}><AddCircleOutlineIcon></AddCircleOutlineIcon></Button>
+        <MUIDataTable title="Reservations" columns={columns} data={rows} options={options} />
+      </ThemeProvider>
+    )
+  }
 }
 
 export default EarningCard3;
-  
