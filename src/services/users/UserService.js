@@ -2,7 +2,6 @@ import {mainUrl} from "store/constant"
 
 class UserService {
     getUsers(serviceCaller, queryParams, callback,errorCallBack){
-        console.log(mainUrl+"/users");
         serviceCaller.get(mainUrl+"/users", queryParams, undefined  ,  callback, errorCallBack)
     }
 /*     updateUser(serviceCaller, requestBody,callback,errorCallBack){

@@ -8,7 +8,7 @@ class HttpUtil {
         fetch(completeUrl, requestOptions)
         .then(response => {
             if(response.status === 401 && window.location.pathname !== "/redirect" && window.location.pathname !== "/login"){
-                window.location.assign(window.location.origin + "/redirect");
+                window.location.assign(window.location.origin + "/orion");
             }
             return response.json();
         })

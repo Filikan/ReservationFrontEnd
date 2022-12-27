@@ -25,7 +25,7 @@ function UserCard() {
       overrides: {
         MuiChip: {
           root: {
-            backgroundColor: "red"
+            backgroundColor: "grey"
           }
         }
       }
@@ -50,14 +50,6 @@ function UserCard() {
     {
       name: "email",
       label: "Email",
-      options: {
-        filter: true,
-        sort: true
-      }
-    },
-    {
-      name: "userName",
-      label: "User Name",
       options: {
         filter: true,
         sort: true

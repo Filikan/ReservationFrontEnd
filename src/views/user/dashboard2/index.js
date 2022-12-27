@@ -4,10 +4,8 @@ import { useEffect, useState } from 'react';
 import { Grid } from '@mui/material';
 
 // project imports
-import EarningCard from './EarningCard';
 import { gridSpacing } from 'store/constant';
-
-// ==============================|| DEFAULT DASHBOARD ||============================== //
+import UserServer from './UserServer';
 
 const Dashboard2 = () => {
     const [isLoading, setLoading] = useState(true);
@@ -18,7 +16,7 @@ const Dashboard2 = () => {
     return (
         <Grid container spacing={gridSpacing}>
             <Grid item xs={12}>
-                <EarningCard isLoading={isLoading} />
+                <UserServer isLoading={isLoading} />
             </Grid>
         </Grid>
     );

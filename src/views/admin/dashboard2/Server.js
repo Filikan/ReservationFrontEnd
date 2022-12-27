@@ -17,7 +17,7 @@ import ServiceCaller from 'services/ServiceCaller';
 import ReservationService from "services/reservation/ReservationService";
 import ServerService from "services/servers/ServerService";
 
-function EarningCard() {
+function Server() {
     const [rows, setRows] = useState([]);
     const [isLoaded, setIsLoaded]= useState(false);
     const [error, setError] = useState(null);
@@ -67,14 +67,6 @@ function EarningCard() {
         {
             name: "serverType",
             label: "Server Type",
-            options: {
-              filter: true,
-              sort: true
-            }
-        },
-        {
-            name: "isHost",
-            label: "Is Host",
             options: {
               filter: true,
               sort: true
@@ -134,5 +126,5 @@ function EarningCard() {
   )}
 }
 
-export default EarningCard;
+export default Server;
   

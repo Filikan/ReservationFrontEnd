@@ -7,9 +7,7 @@ import { Grid } from '@mui/material';
 // import EarningCard from './EarningCard';
 import { gridSpacing } from 'store/constant';
 // import Reservation from './Reservation';
-import EarningCard3 from './EarningCard3';
-
-// ==============================|| DEFAULT DASHBOARD ||============================== //
+import UserReservation from './UserReservation';
 
 const Dashboard = () => {
     const [isLoading, setLoading] = useState(true);
@@ -22,7 +20,7 @@ const Dashboard = () => {
             <Grid item xs={12}>
                 {/* <EarningCard isLoading={isLoading} /> */}
                 {/* <Reservation isLoading={isLoading} /> */}
-                <EarningCard3 isLoading={isLoading} />
+                <UserReservation isLoading={isLoading} />
             </Grid>
         </Grid>
     );

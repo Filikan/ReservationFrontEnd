@@ -68,10 +68,11 @@ const Login = ({ ...others }) => {
             password : password,
           })
           .then((res) => res.json())
-          .then((result) => { /* localStorage.setItem("tokenKey",result.accessToken);
-                            localStorage.setItem("refreshKey",result.refreshToken);
+          .then((result) => {localStorage.setItem("tokenKey",result.accessToken);
+                            // localStorage.setItem("refreshKey",result.refreshToken);
                             localStorage.setItem("currentUser",result.userId);
-                            localStorage.setItem("currentUserRole",result.roleName); */ 
+                            // localStorage.setItem("currentUserRole",result.roleName);
+                            localStorage.setItem("email",email)
                             setStore({roleName: result.roleName,});
                         })
           .catch((err) => console.log(err))

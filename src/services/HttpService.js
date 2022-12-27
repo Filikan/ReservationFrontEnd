@@ -3,8 +3,8 @@ export const ReservationWithAuth = (url, body) => {
     var request = fetch(url,  {
         method: "POST", 
         headers: {
-          "Content-Type": "application/json"
-          // "Authorization" : localStorage.getItem("tokenKey"),
+          "Content-Type": "application/json",
+          "Authorization" : localStorage.getItem("tokenKey"),
         },
         body : JSON.stringify(body),
       })

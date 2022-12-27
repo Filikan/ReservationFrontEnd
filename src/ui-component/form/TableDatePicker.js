@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 export default function TableDatePicker() {
  const [startDate, setStartDate] = useState(new Date());
- const [endDate, setEndDate] = useState(new Date());
+ const [endDate, setEndDate] = useState(new Date()); //on some examples it's -> useState(null);
 
  const onChange = (dates) => {
     const [start, end] = dates;

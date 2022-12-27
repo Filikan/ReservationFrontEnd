@@ -5,7 +5,6 @@ import { Grid } from '@mui/material';
 
 // project imports
 import { gridSpacing } from 'store/constant';
-// import NewReservation from './NewReservation';
 import NewReservation from './NewReservation';
 
 // ==============================|| DEFAULT DASHBOARD ||============================== //
@@ -20,7 +19,6 @@ const Dashboard = () => {
         <Grid container spacing={gridSpacing}>
             <Grid item xs={12}>
                 <NewReservation isLoading={isLoading} />
-                {/* <NewResForm isLoading={isLoading} /> */}
             </Grid>
         </Grid>
     );

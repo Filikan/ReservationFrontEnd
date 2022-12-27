@@ -5,7 +5,7 @@ class ServiceCaller {
         const uuidOptions = {};
 
         this.correlationId = uuidv1(uuidOptions);
-        this.accessToken = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyNiIsImlhdCI6MTY3MTQzMjExMywiZXhwIjoxNjcxNDMyNzE3fQ.rJpZ3fxcz2_00pgbAOPZFpMPa29lf_bDoGIiZx-xCmJ6mpsNed1n211jfQXM90eJymdOwLy8DKiHR9bzwPhXTw";
+        this.accessToken = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyNiIsImlhdCI6MTY3MjEyNDUwOSwiZXhwIjoxNjcyMTI1MTE0fQ.UYLOSE5q616GKcdhfJL1cAGTt4msUy4v-9uoIYVNryV2JgMF8MjjsAsZTiNyQOyKQlkKi1tZ5M7_BFia7DDiRg";
         this.headers = {
             'X-Correlation-Id': this.correlationId,
             "Access-Control-Allow-Origin": "*",

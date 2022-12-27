@@ -1,78 +1,135 @@
-// material-ui
-import { useEffect, useState } from 'react';
-// material-ui
-import { Grid, Typography } from '@mui/material';
-import { gridSpacing } from 'store/constant';
-
-import SampleService from 'services/sample/SampleService';
+import MUIDataTable from "mui-datatables";
+import { createTheme } from "@mui/material";
+import { ThemeProvider } from "@mui/material";
+import { Button } from "@mui/material";
+import EditIcon from '@mui/icons-material/Edit';
+import { useState, useEffect } from "react";
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import { Modal, Box } from '@mui/material';
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import { TextField } from '@mui/material';
+import Typography from '@mui/material/Typography';
+import UserService from 'services/users/UserService';
 import ServiceCaller from 'services/ServiceCaller';
-import Reservation from 'components/Reservation/Reservation';
+import ReservationService from "services/reservation/ReservationService";
 
-import CssBaseline from '@mui/material/CssBaseline';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import ReservationService from 'services/reservation/ReservationService';
+function Reservation() {
+  const [rows, setRows] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [error, setError] = useState(null);
 
-
-const SamplePage = () => {
-    const [error, setError] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [data, setData] = useState([]);
-    const [isSuccess, setSuccess] = useState(false);
-    const getData = () => {
-        let serviceCaller = new ServiceCaller();
-        ReservationService.getReservations(serviceCaller, '', (res) => {
-            setSuccess(true);
-            console.log(res);
-            setIsLoaded(true);
-            setData(res);
-        },(err) => {
-            setSuccess(false);
-            console.log(err);
-        });
+  const handleButton = (path) => {
+    sendRequest(path)
+    navigate("/newReservation")
+  }
+  const getMuiTheme = () =>
+    createTheme({
+      overrides: {
+        MuiChip: {
+          root: {
+            backgroundColor: "grey"
+          }
+        }
+      }
+    });
+  const columns = [
+    {
+      name: "firstName",
+      label: "First Name",
+      options: {
+        filter: true,
+        sort: true
+      }
+    },
+    {
+      name: "lastName",
+      label: "Last Name",
+      options: {
+        filter: true,
+        sort: true
+      }
+    },
+    {
+      name: "serverName",
+      label: "Server Name",
+      options: {
+        filter: true,
+        sort: true
+      }
+    },
+    {
+      name: "reservationStartDate",
+      label: "Reservation Start Date",
+      options: {
+        filter: true,
+        sort: true
+      }
+    },
+    {
+      name: "reservationEndDate",
+      label: "Reservation End Date",
+      options: {
+        filter: true,
+        sort: true
+      }
+    },
+    {
+      name: "edit",
+      label: "Edit",
+      options: {
+        filter: false,
+        sort: false,
+        customBodyRenderLite: (dataIndex) => {
+          return (
+            <Button aria-label="edit" onClick={() => { }}><EditIcon style={{ color: "#9e9e9e" }}></EditIcon></Button>
+          );
+        }
+      }
     }
-
-    useEffect(() => {
-        getData()
-    }, []);
-
-    if (error) {
-        return <div> Error! </div>;
-    } else if (!isLoaded) {
-        return <div> Loading... </div>;
-    } else {
-
-        return (
-            <Grid container spacing={gridSpacing}>
-                <Grid item xs={12}>
-                    {data?.map((reservation) => (
-                        <Typography variant="body2">
-                            {/* {product.title} */}
-                            <React.Fragment>
-                                <CssBaseline />
-                                <Container fixed>
-                                    <Box sx={{ bgcolor: '#cfe8fc', height: '100vh' }} >
-                                        
-                                            <Reservation firstName={reservation.firstName} lastName={reservation.lastName}
-                                                serverName={reservation.serverName} reservationDate={reservation.reservationDate}
-                                                userId={reservation.userId}></Reservation>
-                                    </Box>
-
-                                </Container>
-                            </React.Fragment>
-                        </Typography>
-                    )
-                    )}:(
-                    <Typography variant="body2">
-                        No Product Data
-                    </Typography>
-                    )
-
-
-                </Grid>
-            </Grid>
-        )
-    };
+  ];
+  const options = {
+    filterType: 'checkbox',
+    onRowSelectionChange: (currentSelect, allSelected) => {
+      const result = allSelected.map(item => { return rows.at(item.index) });
+      const selectedIds = result.map(item => {
+        return item.id;
+      });
+      //console.log("Selected Array: ",selectedIds);
+      console.log(selectedIds);
+    },
+    //onRowsDelete:()=>{handleDelete()},
+  }
+  const getData = () => {
+    let serviceCaller = new ServiceCaller();
+    ReservationService.getReservations(serviceCaller, '', (res) => {
+      setIsLoaded(true);
+      setRows(res);
+    }, (error) => {
+      console.log(error)
+      setIsLoaded(true);
+      setError(error);
+    })
+    //setRefresh(false);
+  }
+  useEffect(() => {
+    getData()
+  }, [])
+  if (error) {
+    return <div> Error !!!</div>;
+  } else if (!isLoaded) {
+    return <div> Loading... </div>;
+  }
+  else {
+    return (
+      <ThemeProvider theme={getMuiTheme()}>
+        <Button  onClick={() => handleButton()}  variant="outlined" style={{ margin: 8, backgroundColor: "white", color: "black", borderColor: "white", textTransform: 'none' }}><AddCircleOutlineIcon></AddCircleOutlineIcon></Button>
+        <MUIDataTable title="Reservations" columns={columns} data={rows} options={options} />
+      </ThemeProvider>
+    )
+  }
 }
-    export default SamplePage;
 
+export default Reservation;
