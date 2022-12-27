@@ -48,11 +48,11 @@ const OutlineInputStyle = styled(OutlinedInput, { shouldForwardProp })(({ theme 
 const HeaderAvatarStyle = styled(Avatar, { shouldForwardProp })(({ theme }) => ({
     ...theme.typography.commonAvatar,
     ...theme.typography.mediumAvatar,
-    background: theme.palette.secondary.light,
-    color: theme.palette.secondary.dark,
+    background: theme.palette.grey[300],
+    color: theme.palette.common.black,
     '&:hover': {
-        background: theme.palette.secondary.dark,
-        color: theme.palette.secondary.light
+        background: theme.palette.common.black,
+        color: theme.palette.common.white
     }
 }));
 

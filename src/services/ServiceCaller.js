@@ -5,9 +5,10 @@ class ServiceCaller {
         const uuidOptions = {};
 
         this.correlationId = uuidv1(uuidOptions);
-        this.accessToken = "Bearer 123";
+        this.accessToken = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyNiIsImlhdCI6MTY3MjEyNDUwOSwiZXhwIjoxNjcyMTI1MTE0fQ.UYLOSE5q616GKcdhfJL1cAGTt4msUy4v-9uoIYVNryV2JgMF8MjjsAsZTiNyQOyKQlkKi1tZ5M7_BFia7DDiRg";
         this.headers = {
             'X-Correlation-Id': this.correlationId,
+            "Access-Control-Allow-Origin": "*",
             'Authorization' : this.accessToken
         };
         this.httpUtil = new HttpUtil();

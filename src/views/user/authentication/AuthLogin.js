@@ -29,7 +29,7 @@ import { useNavigate } from 'react-router-dom';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 //auth
-import { PostWithoutAuth } from 'services/HttpService';
+import { ReservationWithoutAuth } from 'services/HttpService';
 
 // ============================|| FIREBASE - LOGIN ||============================ //
 
@@ -63,15 +63,16 @@ const Login = ({ ...others }) => {
     } 
 
     const sendRequest = (path) => {
-        PostWithoutAuth(("/auth/"+path), {
+        ReservationWithoutAuth(("/auth/"+path), {
             email  : email , 
             password : password,
           })
           .then((res) => res.json())
-          .then((result) => { /* localStorage.setItem("tokenKey",result.accessToken);
-                            localStorage.setItem("refreshKey",result.refreshToken);
+          .then((result) => {localStorage.setItem("tokenKey",result.accessToken);
+                            // localStorage.setItem("refreshKey",result.refreshToken);
                             localStorage.setItem("currentUser",result.userId);
-                            localStorage.setItem("currentUserRole",result.roleName); */ 
+                            // localStorage.setItem("currentUserRole",result.roleName);
+                            localStorage.setItem("email",email)
                             setStore({roleName: result.roleName,});
                         })
           .catch((err) => console.log(err))
@@ -81,8 +82,8 @@ const Login = ({ ...others }) => {
         setEmail("");
         setPassword("");
         console.log(localStorage);
-        localStorage.getItem("currentUserRole") === "EMPLOYEE" ? navigate('/user') : navigate('/admin/dashboard')
-        //navigate("/admin/department");
+        // localStorage.getItem("currentUserRole") === "EMPLOYEE" ? navigate('/users') : navigate('/admin/servers')
+        navigate("/admin/reservations");
     };
     return (
         <>

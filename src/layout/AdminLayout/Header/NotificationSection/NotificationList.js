@@ -26,7 +26,7 @@ const ListItemWrapper = styled('div')(({ theme }) => ({
     cursor: 'pointer',
     padding: 16,
     '&:hover': {
-        background: theme.palette.primary.light
+        background: theme.palette.grey[300]
     },
     '& .MuiListItem-root': {
         padding: 0
@@ -93,7 +93,7 @@ const NotificationList = () => {
                         <Grid container justifyContent="flex-end">
                             <Grid item xs={12}>
                                 <Typography variant="caption" display="block" gutterBottom>
-                                    2 min ago
+                                    5 min ago
                                 </Typography>
                             </Grid>
                         </Grid>
@@ -201,7 +201,7 @@ const NotificationList = () => {
                     <ListItemAvatar>
                         <Avatar alt="John Doe" src={User1} />
                     </ListItemAvatar>
-                    <ListItemText primary={<Typography variant="subtitle1">John Doe</Typography>} />
+                    <ListItemText primary={<Typography variant="subtitle1">Furkan Civan</Typography>} />
                     <ListItemSecondaryAction>
                         <Grid container justifyContent="flex-end">
                             <Grid item xs={12}>
@@ -217,7 +217,7 @@ const NotificationList = () => {
                         <Typography component="span" variant="subtitle2">
                             Uploaded two file on &nbsp;
                             <Typography component="span" variant="h6">
-                                21 Jan 2020
+                                21 Jan 2022
                             </Typography>
                         </Typography>
                     </Grid>

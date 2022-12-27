@@ -12,18 +12,18 @@ const dashboard = {
     type: 'group',
     children: [
         {
-            id: 'dashboard1',
+            id: 'reservations',
             title: 'Reservations',
             type: 'item',
-            url: '/admin/dashboard',
+            url: '/admin/reservations',
             icon: icons.IconDashboard,
             breadcrumbs: false
         },
         {
-            id: 'dashboard2',
+            id: 'servers',
             title: 'Servers',
             type: 'item',
-            url: '/admin/dashboard2',
+            url: '/admin/servers',
             icon: icons.IconDashboard,
             breadcrumbs: false
         }

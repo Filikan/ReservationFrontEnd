@@ -1,9 +1,11 @@
-import other from './other';
+import dashboard from './dashboard';
+import pages from './pages';
+import newReservation from './newReservation';
 
 // ==============================|| MENU ITEMS ||============================== //
 
 const menuItems = {
-    items: [other]
+    items: [dashboard,newReservation,pages]
 };
 
 export default menuItems;
